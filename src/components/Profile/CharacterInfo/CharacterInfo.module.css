@@ -1,0 +1,29 @@
+.content {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 80px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.characters {
+    padding: 15px 80px;
+    margin: 10px;
+    box-shadow: #cea317 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    width: 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.character {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.characters:hover {
+    box-shadow: #cea317 0px 5px 15px;
+}
