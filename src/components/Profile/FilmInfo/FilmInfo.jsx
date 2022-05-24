@@ -7,16 +7,15 @@ import { Link } from "react-router-dom";
 
 const FilmInfo = () => {
 
-    // let params = useParams();
-    // console.log('params => ', params)
+    let params = useParams();
     
-    const [data, setData] = useState ([]);
+    const [film, setFilm] = useState ([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://swapi.dev/api/films')
+        axios.get('https://swapi.dev/api/films/' + params.id)
             .then(response => {
-                setData(response.data.results);
+                setFilm(response.data);
                 setLoading(false);
             })
     }, []);
@@ -30,26 +29,23 @@ const FilmInfo = () => {
     }
 
     return (
-        <div className={styles.container}>
-                { data.map( item => {
-                    return (
-                        <div className={styles.films}>
-                            <div className={styles.film}>
-                                <h1>{item.title}</h1>
-                                <p><span>director: </span>{item.director}</p>
-                                <p><span>producer: </span>{item.producer}</p>
-                                <p><span>date of realese: </span>{item.release_date}</p>
-                                <p><span>opening: </span>"{item.opening_crawl}"</p>
-                                <p><span>Characters:</span></p>
-                                <Link to={'/character/'} className={styles.characters}>
-                                    <Characters/>
-                                </Link>
-                                
-                            </div>
-                        </div>
-                        
-                    );
-                })}
+        <div className={styles.container}>  
+            <div className={styles.films}>
+                <div className={styles.film}>
+                    <h1>{film.title}</h1>
+                    <p><span>director: </span>{film.director}</p>
+                    <p><span>producer: </span>{film.producer}</p>
+                    <p><span>date of realese: </span>{film.release_date}</p>
+                    <p><span>opening: </span>"{film.opening_crawl}"</p>
+                    <p><span>Characters:</span></p>
+                    <Link to={'/character/'} className={styles.characters}>
+                        <Characters/>
+                    </Link>
+                    
+                </div>
+            </div>
+            
+        );
         </div>
     );
 };
