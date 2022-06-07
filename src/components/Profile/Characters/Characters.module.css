@@ -1,18 +1,21 @@
 .charactersList {
     display: flex;
+    flex-wrap: wrap;
     color: black;
     font-weight: 500;
-    transition: 0.3s;
 }
 
-.charactersList:hover {
+.characters {
+    margin-right: 25px;
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.characters:hover {
     text-shadow: 2px 2px 2px #f5aa27;
     cursor: pointer;
-}
-
-.container {
-    width: 70%;
-    margin: 0 auto;
 }
 
 @keyframes pulse {

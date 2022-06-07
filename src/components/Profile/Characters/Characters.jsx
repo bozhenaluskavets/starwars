@@ -1,54 +1,34 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from './Characters.module.css';
-import { getCharacters } from './../../../services/Characters.service';
-import { getFilmById } from "../../../services/FilmInfo.service";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-export const Characters = () => {
-
-    let params = useParams();
+export const Characters = ({characterLinks}) => {
 
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect( () => {
+        const fetchData = async () => {
 
-        axios.get('https://swapi.dev/api/people/' + params.id)
-            .then(response => {
-                setCharacters(response.data);
+            const newCharacters = [];
+            characterLinks.forEach(async (link) => {
+                const response = await axios.get(link);
+                newCharacters.push(response.data);
+
+                setCharacters(newCharacters);
                 setLoading(false);
             })
-            
+        }
+        
+        fetchData()
     }, [])
-
-    // useEffect( () => {
-
-            // axios.get(`https://swapi.dev/api/people/${id}` + params.id)
-
-    // useEffect( () => {
-
-    //     axios.get('https://swapi.dev/api/people/' + params.id)
-    //         .then(async (data) => {
-    //             const response = await Promise.all(data.characters.map(character => {
-    //                 return getCharacters(character);
-    //                 setLoading(false);
-    //             }));
-    //             setCharacters(response);
-    //         })
-            
-    // }, [])
-
-    // .then(response => {
-    //     setCharacters(response.data);
-    //     setLoading(false);
-    // })
 
     if (loading) {
         return (
             <div className={styles.loaderBox}>
-                <div className={styles.loader}></div>
+                <div className={styles.loader}> 
+                </div>
             </div>
         )
     }
@@ -57,12 +37,31 @@ export const Characters = () => {
         <div>
             <div className={styles.container}>
                 <div className={styles.charactersList}>
-                    {characters.name}
+                    {characters.map(char => {
+                        const id = char.url.split('/')[5];
+                        return (
+                            <Link to={'/character/' + id} className={styles.characters}>
+                                {char.name}
+                            </Link>
+                        )
+                    })}
                 </div>
             </div>
         </div>
     )
 }
 
-
 export default Characters;
+
+
+
+
+
+            // const first = characterLinks[0];
+            // const second = characterLinks[1];
+
+            // const firstResponse = await axios.get(first);
+            // const secondResponse = await axios.get(second);
+
+            // setCharacters([firstResponse.data]);
+            // setLoading(false);

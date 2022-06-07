@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Characters from "../Characters/Characters";
 import styles from './FilmInfo.module.css';
-import { Link } from "react-router-dom";
 
 const FilmInfo = () => {
 
@@ -38,9 +37,9 @@ const FilmInfo = () => {
                     <p><span>date of realese: </span>{film.release_date}</p>
                     <p><span>opening: </span>"{film.opening_crawl}"</p>
                     <p><span>Characters:</span></p>
-                    <Link to={'/character/'} className={styles.characters}>
-                        <Characters/>
-                    </Link>
+                    <div>
+                        <Characters characterLinks={film.characters}/>
+                    </div>
                     
                 </div>
             </div>
