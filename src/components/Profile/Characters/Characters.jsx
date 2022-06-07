@@ -18,6 +18,7 @@ export const Characters = ({characterLinks}) => {
 
                 setCharacters(newCharacters);
                 setLoading(false);
+                console.log();
             })
         }
         
