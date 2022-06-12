@@ -1,19 +1,37 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from './CharacterInfo.module.css';
-import { getAllFilms } from "../../../services/FilmsList.service";
-import { getCharacters } from "../../../services/Characters.service";
+import { useParams } from "react-router-dom";
+import CharacterFilms from "./CharacterFilms/CharacterFilms";
 
-const CharacterInfo = ({characterLinks}) => {
+const CharacterInfo = () => {
 
-    // const [characters, setCharacters] = useState([]);
+    let params = useParams();
+
+    const [character, setCharacter] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios.get('https://swapi.dev/api/people/' + params.id)
+            .then(response => {
+                setCharacter(response.data);
+                setLoading(false);
+            })
+    }, []);
+
+
+    // let params = useParams();
+
+    // const [character, setCharacters] = useState([]);
     // const [loading, setLoading] = useState(true);
 
     // useEffect(() => {
-    //     getAllFilms()
+    //     axios.get('https://swapi.dev/api/people/' + params.id)
     //         .then(async (data) => {
-    //             const response = await Promise.all(data.characters.map(character => {
-    //                 return getCharacters(character)
+    //             const response = await Promise.all(data.map(character => {
+    //                 const id = character.url.split('/')[5];
+    //                 console.log(character.url);
+    //                 return getCharacters(character + id)
     //             }));
 
     //             setCharacters(response.data);
@@ -21,82 +39,34 @@ const CharacterInfo = ({characterLinks}) => {
     //         })
     // }, []);
 
-
-    // if (loading) {
-    //     return (
-    //         <div className={styles.loaderBox}>
-    //             <div className={styles.loader}></div>
-    //         </div>
-    //     )
-    // }
-
-    // return (
-    //     <div className={styles.container}>
-    //         <div className={styles.content}>
-    //         {characters.map(c => {
-    //             return (
-    //                 <div className={styles.characters}>
-    //                     <div className={styles.character}>
-    //                         <p>name: {c.name}</p>
-    //                         <p>height: {c.height}</p>
-    //                         <p>weigth: {c.mass}</p>
-    //                         <p>color of skin: {c.skin_color}</p>
-    //                         <p>color of eyes: {c.eye_color}</p>
-    //                         <p>birthday: {c.birth_year}</p>
-    //                         <p>gender: {c.male}</p>
-    //                     </div>
-    //                 </div>
-    //             )
-    //         })}
-    //     </div>
-    //     </div>
-    // );
-
-        const [characters, setCharacters] = useState([]);
-        const [loading, setLoading] = useState(true);
-    
-        useEffect( () => {
-            const fetchData = async () => {
-    
-                const newCharacters = [];
-                characterLinks.forEach(async (link) => {
-                    const response = await axios.get(link);
-                    newCharacters.push(response.data);
-                    console.log(newCharacters)
-    
-                    setCharacters(newCharacters);
-                    setLoading(false);
-                })
-            }
-            
-            fetchData()
-        }, [])
-    
-        if (loading) {
-            return (
-                <div className={styles.loaderBox}>
-                    <div className={styles.loader}> 
-                    </div>
-                </div>
-            )
-        }
-    
+    if (loading) {
         return (
-            <div>
-                <div className={styles.container}>
-                    <div className={styles.charactersList}>
-                        {characters.map(char => {
-                            return (
-                                <div to={'/character/' + char.name} className={styles.characters}>
-                                    {char.name}
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+            <div className={styles.loaderBox}>
+                <div className={styles.loader}></div>
             </div>
         )
     }
-// };
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.content}>
+                    <div className={styles.characters}>
+                        <div className={styles.character}>
+                            <p>name: {character.name}</p>
+                            <p>height: {character.height}</p>
+                            <p>weigth: {character.mass}</p>
+                            <p>color of skin: {character.skin_color}</p>
+                            <p>color of eyes: {character.eye_color}</p>
+                            <p>birthday: {character.birth_year}</p>
+                            <p>gender: {character.male}</p>
+                            <div>
+                                <CharacterFilms filmLinks={character.films}/>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    );
+};
 
 export default CharacterInfo;

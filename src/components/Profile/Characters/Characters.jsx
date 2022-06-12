@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from './Characters.module.css';
 import { Link } from "react-router-dom";
 
-export const Characters = ({characterLinks}) => {
+const Characters = ({characterLinks}) => {
 
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,7 +18,6 @@ export const Characters = ({characterLinks}) => {
 
                 setCharacters(newCharacters);
                 setLoading(false);
-                console.log();
             })
         }
         
@@ -53,16 +52,3 @@ export const Characters = ({characterLinks}) => {
 }
 
 export default Characters;
-
-
-
-
-
-            // const first = characterLinks[0];
-            // const second = characterLinks[1];
-
-            // const firstResponse = await axios.get(first);
-            // const secondResponse = await axios.get(second);
-
-            // setCharacters([firstResponse.data]);
-            // setLoading(false);
