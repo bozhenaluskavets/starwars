@@ -12,13 +12,13 @@ const Characters = ({characterLinks}) => {
         const fetchData = async () => {
 
             const newCharacters = [];
-            characterLinks.forEach(async (link) => {
+            await Promise.all(characterLinks.map(async (link) => {
                 const response = await axios.get(link);
                 newCharacters.push(response.data);
+            }))
 
-                setCharacters(newCharacters);
-                setLoading(false);
-            })
+            setCharacters(newCharacters);
+            setLoading(false);
         }
         
         fetchData()

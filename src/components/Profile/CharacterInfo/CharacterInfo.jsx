@@ -19,26 +19,6 @@ const CharacterInfo = () => {
             })
     }, []);
 
-
-    // let params = useParams();
-
-    // const [character, setCharacters] = useState([]);
-    // const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-    //     axios.get('https://swapi.dev/api/people/' + params.id)
-    //         .then(async (data) => {
-    //             const response = await Promise.all(data.map(character => {
-    //                 const id = character.url.split('/')[5];
-    //                 console.log(character.url);
-    //                 return getCharacters(character + id)
-    //             }));
-
-    //             setCharacters(response.data);
-    //             setLoading(false);
-    //         })
-    // }, []);
-
     if (loading) {
         return (
             <div className={styles.loaderBox}>
@@ -52,13 +32,12 @@ const CharacterInfo = () => {
             <div className={styles.content}>
                     <div className={styles.characters}>
                         <div className={styles.character}>
-                            <p>name: {character.name}</p>
-                            <p>height: {character.height}</p>
-                            <p>weigth: {character.mass}</p>
-                            <p>color of skin: {character.skin_color}</p>
-                            <p>color of eyes: {character.eye_color}</p>
-                            <p>birthday: {character.birth_year}</p>
-                            <p>gender: {character.male}</p>
+                            <h1>{character.name}</h1>
+                            <p><span>height: </span>{character.height}</p>
+                            <p><span>weigth: </span>{character.mass}</p>
+                            <p><span>color of skin: </span>{character.skin_color}</p>
+                            <p><span>color of eyes: </span>{character.eye_color}</p>
+                            <p><span>birthday: </span>{character.birth_year}</p>
                             <div>
                                 <CharacterFilms filmLinks={character.films}/>
                             </div>

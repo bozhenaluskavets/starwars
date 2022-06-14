@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Characters from "../Characters/Characters";
+import Characters from "./Characters/Characters";
 import styles from './FilmInfo.module.css';
 
 const FilmInfo = () => {

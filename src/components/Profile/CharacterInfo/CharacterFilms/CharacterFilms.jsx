@@ -17,9 +17,10 @@ const CharacterFilms = ({filmLinks}) => {
                 const response = await axios.get(link);
                 charFilms.push(response.data);
 
-                setFilms(charFilms);
-                setLoading(false);
             }))
+
+            setFilms(charFilms);
+            setLoading(false);
         }
         
         fetchData()
@@ -37,20 +38,16 @@ const CharacterFilms = ({filmLinks}) => {
 
     return (
         <div>
+            <h2>Films:</h2>
             <div className={styles.container}>
-                <div className={styles.charactersList}>
-                    {/* {JSON.stringify(films)} */}
+                <div>
                     {films.map(film => {
-                        // console.log(films)
                         const id = film.url.split('/')[5];
                         return (
-                            <Link to={'/film/' + id} className={styles.characters}>
+                            <Link to={'/film/' + id} className={styles.characterFilm}>
+
                                 {film.title}
-                                {/* {console.log('films =>', film.title)} */}
                             </Link>
-                            // <div>
-                            //     {film.title}
-                            // </div>
                         )
                     })}
                 </div>
