@@ -1,30 +1,27 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import styles from './CharacterFilms.module.css';
+import styles from './index.module.css';
 import { Link } from "react-router-dom";
 
-const CharacterFilms = ({filmLinks}) => {
+const Characters = ({characterLinks}) => {
 
-    const [films, setFilms] = useState([]);
+    const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect( () => {
-        console.log(123)
         const fetchData = async () => {
 
-            const charFilms = [];
-            await Promise.all(filmLinks.map(async (link) => {
+            const newCharacters = [];
+            await Promise.all(characterLinks.map(async (link) => {
                 const response = await axios.get(link);
-                charFilms.push(response.data);
-
+                newCharacters.push(response.data);
             }))
 
-            setFilms(charFilms);
+            setCharacters(newCharacters);
             setLoading(false);
         }
         
         fetchData()
-        console.log(films)
     }, [])
 
     if (loading) {
@@ -38,15 +35,13 @@ const CharacterFilms = ({filmLinks}) => {
 
     return (
         <div>
-            <h2>Films:</h2>
             <div className={styles.container}>
-                <div>
-                    {films.map(film => {
-                        const id = film.url.split('/')[5];
+                <div className={styles.charactersList}>
+                    {characters.map(char => {
+                        const id = char.url.split('/')[5];
                         return (
-                            <Link to={'/film/' + id} className={styles.characterFilm}>
-
-                                {film.title}
+                            <Link to={'/character/' + id} className={styles.characters}>
+                                {char.name}
                             </Link>
                         )
                     })}
@@ -56,4 +51,4 @@ const CharacterFilms = ({filmLinks}) => {
     )
 }
 
-export default CharacterFilms;
+export default Characters;

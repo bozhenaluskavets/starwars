@@ -1,9 +1,8 @@
 import React from 'react';
-import './App.css';
-import Header from './components/Header/Header';
-import FilmsList from './components/Profile/FilmsList/FilmsList';
-import FilmInfo from './components/Profile/FilmInfo/FilmInfo';
-import CharacterInfo from './components/Profile/CharacterInfo/CharacterInfo';
+import Header from './components/Header/index';
+import FilmsList from './components/pages/FilmsList';
+import FilmInfo from './components/pages/FilmInfo';
+import CharacterInfo from './components/pages/CharacterInfo';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {

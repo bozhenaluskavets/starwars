@@ -1,14 +1,14 @@
+* {
+    margin: 0;
+}
+
 .container {
-    background: url('https://wallpapertops.com/walldb/original/a/9/b/628106.jpg') no-repeat; 
+    background: url(../../../assets/backgroundCharacterInfo.jpg) no-repeat; 
     background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.content {
-    margin-top: 100px;
 }
 
 span {
@@ -30,7 +30,7 @@ span {
     flex-direction: column;
     justify-content: center;
     transition: 0.3s;
-    padding: 70px 60px;
+    padding: 40px 60px;
     text-transform: uppercase;
     font: 500 18px 'Montserrat', sans-serif;
     text-align: center;
@@ -38,6 +38,11 @@ span {
     margin: 0 auto;
     letter-spacing: 2px;
 }
+
+.character p {
+    margin: 15px 0;
+}
+
 
 @keyframes pulse {
     0% {

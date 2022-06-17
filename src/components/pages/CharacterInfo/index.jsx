@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import styles from './CharacterInfo.module.css';
+import styles from './index.module.css';
 import { useParams } from "react-router-dom";
-import CharacterFilms from "./CharacterFilms/CharacterFilms";
+import CharacterFilms from "./CharacterFilms";
+import { getCharacter } from "../../../services/Characters.service";
 
 const CharacterInfo = () => {
 
@@ -12,9 +13,9 @@ const CharacterInfo = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://swapi.dev/api/people/' + params.id)
+        getCharacter(params.id)
             .then(response => {
-                setCharacter(response.data);
+                setCharacter(response);
                 setLoading(false);
             })
     }, []);

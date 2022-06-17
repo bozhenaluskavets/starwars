@@ -1,23 +1,24 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import styles from './Characters.module.css';
+import styles from './index.module.css';
 import { Link } from "react-router-dom";
 
-const Characters = ({characterLinks}) => {
+const CharacterFilms = ({filmLinks}) => {
 
-    const [characters, setCharacters] = useState([]);
+    const [films, setFilms] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect( () => {
         const fetchData = async () => {
 
-            const newCharacters = [];
-            await Promise.all(characterLinks.map(async (link) => {
+            const charFilms = [];
+            await Promise.all(filmLinks.map(async (link) => {
                 const response = await axios.get(link);
-                newCharacters.push(response.data);
+                charFilms.push(response.data);
+
             }))
 
-            setCharacters(newCharacters);
+            setFilms(charFilms);
             setLoading(false);
         }
         
@@ -35,13 +36,15 @@ const Characters = ({characterLinks}) => {
 
     return (
         <div>
+            <h2 className={styles.title}>Films:</h2>
             <div className={styles.container}>
-                <div className={styles.charactersList}>
-                    {characters.map(char => {
-                        const id = char.url.split('/')[5];
+                <div>
+                    {films.map(film => {
+                        const id = film.url.split('/')[5];
                         return (
-                            <Link to={'/character/' + id} className={styles.characters}>
-                                {char.name}
+                            <Link to={'/film/' + id} className={styles.characterFilm}>
+
+                                {film.title}
                             </Link>
                         )
                     })}
@@ -51,4 +54,4 @@ const Characters = ({characterLinks}) => {
     )
 }
 
-export default Characters;
+export default CharacterFilms;

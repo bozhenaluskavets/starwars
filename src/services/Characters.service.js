@@ -1,9 +1,11 @@
 import axios from "axios";
 
-export const getCharacters = (url) => {
-    return axios.get(url)
-    .then(response => {
-        return response.data
-    });
+const API_URL = 'https://swapi.dev/api/people/';
+
+export const getCharacter = (id) => {
+    return axios.get(API_URL + id)
+                .then(response => {
+                    return response.data;
+                });
 };
 

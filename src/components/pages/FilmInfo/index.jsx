@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Characters from "./Characters/Characters";
-import styles from './FilmInfo.module.css';
+import Characters from "./Characters";
+import styles from './index.module.css';
+import { getFilmById } from "../../../services/FilmInfo.service";
 
 const FilmInfo = () => {
 
@@ -12,9 +12,8 @@ const FilmInfo = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://swapi.dev/api/films/' + params.id)
-            .then(response => {
-                setFilm(response.data);
+        getFilmById(params.id).then((data) => {
+                setFilm(data);
                 setLoading(false);
             })
     }, []);

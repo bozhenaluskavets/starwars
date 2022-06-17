@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllFilms } from "../../../services/FilmsList.service";
-import styles from './FilmsList.module.css';
+import styles from './index.module.css';
 import { Link } from "react-router-dom";
 
 const FilmsList = () => {
