@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './components/Header/index';
-import FilmsList from './components/pages/FilmsList';
-import FilmInfo from './components/pages/FilmInfo';
-import CharacterInfo from './components/pages/CharacterInfo';
+import FilmsList from './pages/FilmsList';
+import FilmInfo from './pages/FilmInfo';
+import CharacterInfo from './pages/CharacterInfo';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {

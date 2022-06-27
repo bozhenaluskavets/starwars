@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './index.module.css';
-
+import image from "../../assets/logo.png";
 export const Header = () => {
 
     return (
         <header className={styles.header}>
             <Link to={'/'}>
-                <img className={styles.logo} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVD0RkSlQJ6BL7F-sHg_tKn0_BKCdsdxW-TKqsuj1xXYgeyjtbYuPOKYLCIBUIS4TDhqo&usqp=CAU' />
+                <img className={styles.logo} src={image}/>
             </Link>
             <div className={styles.links}>
                 <a className={styles.link} href="https://www.starwars.com/">Our site</a>

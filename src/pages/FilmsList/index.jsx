@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllFilms } from "../../../services/FilmsList.service";
+import { getAllFilms } from "../../services/Films.service";
 import styles from './index.module.css';
 import { Link } from "react-router-dom";
 

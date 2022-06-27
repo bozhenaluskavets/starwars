@@ -20,6 +20,7 @@
     object-fit: contain;
     height: 10vh;
     cursor: pointer;
+    background: url(../../assets/backgroundFilmInfo.jpg) no-repeat;
 }
 
 .navigation {

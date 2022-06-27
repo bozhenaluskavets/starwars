@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Characters from "./Characters";
 import styles from './index.module.css';
-import { getFilmById } from "../../../services/FilmInfo.service";
+import { getFilmById } from "../../services/Films.service";
 
 const FilmInfo = () => {
 

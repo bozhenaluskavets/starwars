@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from './index.module.css';
 import { Link } from "react-router-dom";
+import { getCharacters } from "../../../services/Characters.service";
 
 const Characters = ({characterLinks}) => {
 
@@ -11,13 +12,9 @@ const Characters = ({characterLinks}) => {
     useEffect( () => {
         const fetchData = async () => {
 
-            const newCharacters = [];
-            await Promise.all(characterLinks.map(async (link) => {
-                const response = await axios.get(link);
-                newCharacters.push(response.data);
-            }))
+            const allCharacters = await getCharacters(characterLinks);
 
-            setCharacters(newCharacters);
+            setCharacters(allCharacters);
             setLoading(false);
         }
         
