@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+import styled from "styled-components";
+import background from '../../assets/backgroundFilmInfo.jpg';
 
-* {
-    margin: 0;
-}
-
-.header {
+export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     background-color: #000000;
@@ -14,40 +11,32 @@
     position: fixed;
     top: 0;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px;
-}
+`
 
-.logo {
+export const Logo = styled.img`
     object-fit: contain;
     height: 10vh;
     cursor: pointer;
-    background: url(../../assets/backgroundFilmInfo.jpg) no-repeat;
-}
+    background: url(${background}) no-repeat;
+`
 
-.navigation {
-    display: flex;
-}
-
-.items {
-    display: flex;
-}
-
-.links {
+export const Links = styled.div`
     display: flex;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     line-height: 1.5;
     letter-spacing: 3px;
-}
+`
 
-.link {
+export const Link = styled.a`
     text-decoration: none;
     color: #ce8e17;
     cursor: pointer;
     margin: 0 20px;
     transition: 0.3s;
     font-size: large;
-}
 
-.link:hover {
-    color: #ecd27b;
-}
+    :hover {
+        color: #ecd27b;
+    }
+`

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getAllFilms } from "../../services/Films.service";
-import styles from './index.module.css';
 import { Link } from "react-router-dom";
+import { Container, Content, Films, Film, FilmDirector } from "./style";
+import { Loader, LoaderContainer } from "../../globalStyles";
 
 const FilmsList = () => {
 
@@ -17,28 +18,30 @@ const FilmsList = () => {
 
     if (loading) {
         return (
-            <div className={styles.loaderBox}>
-                <div className={styles.loader}></div>
-            </div>
+            <LoaderContainer>
+                <Loader></Loader>
+            </LoaderContainer>
         )
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.content}>
+        <Container>
+            <Content>
                 { films.map((film) => {
                     return (
-                        <div className={styles.films}>
-                            <Link to={'/film/' + film.episode_id} className={styles.film}>
-                                <h3>{film.title}</h3>
-                                <h5>{film.director}</h5>
-                                <p>{film.release_date}</p>
+                        <Films>
+                            <Link to={'/film/' + film.episode_id}>
+                                <Film>
+                                    <h3>{film.title}</h3>
+                                    <FilmDirector>{film.director}</FilmDirector>
+                                    <p>{film.release_date}</p>
+                                </Film>
                             </Link>
-                        </div>
+                        </Films>
                     );
                 })}
-            </div>
-        </div>
+            </Content>
+        </Container>
     );
 };
 

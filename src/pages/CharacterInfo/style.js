@@ -1,31 +1,29 @@
-* {
-    margin: 0;
-}
+import styled from "styled-components";
+import background from '../../assets/backgroundCharacterInfo.jpg'
 
-.container {
-    background: url(../../assets/backgroundCharacterInfo.jpg) no-repeat; 
-    background-size: cover;
+export const Container = styled.div`
+    background: url(${background}) no-repeat center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+`
 
-span {
+export const ExtraText = styled.span`
     color: #fabf00;
     text-transform: uppercase;
     font: bold 16px 'Montserrat', sans-serif;
     box-shadow: #cea31768 -3px 3px 5px;
     letter-spacing: 8px;
     text-shadow: 2px 2px 2px #000000;
-}
+`
 
-.character {
+export const Character = styled.div`
     box-shadow: #cea317 0px 5px 15px;
     background-color: rgba(240, 248, 255, 0.547);
     text-decoration: none;
     color: black;
-    width: 100%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,42 +35,8 @@ span {
     max-width: 80%;
     margin: 0 auto;
     letter-spacing: 2px;
-}
+`
 
-.character p {
+export const Item = styled.p`
     margin: 15px 0;
-}
-
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.15);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
-}
-
-.loaderBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-
-}
-
-.loader {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: black;
-    animation: pulse 0.85s infinite linear;
-    grid-area: a;
-    align-self: center;
-    justify-self: center;
-}
+`

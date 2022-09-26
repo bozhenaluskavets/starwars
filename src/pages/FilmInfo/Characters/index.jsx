@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-import styles from './index.module.css';
 import { Link } from "react-router-dom";
 import { getCharacters } from "../../../services/Characters.service";
+import { Loader, LoaderContainer } from "../../../globalStyles";
+import { CharactersList, AllCharacters } from "./style";
 
 const Characters = ({characterLinks}) => {
 
@@ -23,28 +23,25 @@ const Characters = ({characterLinks}) => {
 
     if (loading) {
         return (
-            <div className={styles.loaderBox}>
-                <div className={styles.loader}> 
-                </div>
-            </div>
+            <LoaderContainer>
+                <Loader></Loader>
+            </LoaderContainer>
         )
     }
 
     return (
-        <div>
-            <div className={styles.container}>
-                <div className={styles.charactersList}>
-                    {characters.map(char => {
-                        const id = char.url.split('/')[5];
-                        return (
-                            <Link to={'/character/' + id} className={styles.characters}>
-                                {char.name}
-                            </Link>
-                        )
-                    })}
-                </div>
-            </div>
-        </div>
+        <CharactersList>
+            {characters.map(char => {
+                const id = char.url.split('/')[5];
+                return (
+                    <Link to={'/character/' + id}>
+                        <AllCharacters>
+                            {char.name}
+                        </AllCharacters>
+                    </Link>
+                )
+            })}
+        </CharactersList>
     )
 }
 

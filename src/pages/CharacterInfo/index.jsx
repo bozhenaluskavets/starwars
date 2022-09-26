@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-import styles from './index.module.css';
 import { useParams } from "react-router-dom";
 import CharacterFilms from "./CharacterFilms";
 import { getCharacter } from "../../services/Characters.service";
+import { Loader, LoaderContainer } from "../../globalStyles";
+import { Character, Container, Item, ExtraText } from "./style";
 
 const CharacterInfo = () => {
 
@@ -22,30 +22,26 @@ const CharacterInfo = () => {
 
     if (loading) {
         return (
-            <div className={styles.loaderBox}>
-                <div className={styles.loader}></div>
-            </div>
+            <LoaderContainer>
+                <Loader></Loader>
+            </LoaderContainer>
         )
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.content}>
-                    <div className={styles.characters}>
-                        <div className={styles.character}>
-                            <h1>{character.name}</h1>
-                            <p><span>height: </span>{character.height}</p>
-                            <p><span>weigth: </span>{character.mass}</p>
-                            <p><span>color of skin: </span>{character.skin_color}</p>
-                            <p><span>color of eyes: </span>{character.eye_color}</p>
-                            <p><span>birthday: </span>{character.birth_year}</p>
-                            <div>
-                                <CharacterFilms filmLinks={character.films}/>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
+        <Container>
+            <Character>
+                <h1>{character.name}</h1>
+                <Item><ExtraText>height: </ExtraText>{character.height}</Item>
+                <Item><ExtraText>weigth: </ExtraText>{character.mass}</Item>
+                <Item><ExtraText>color of skin: </ExtraText>{character.skin_color}</Item>
+                <Item><ExtraText>color of eyes: </ExtraText>{character.eye_color}</Item>
+                <Item><ExtraText>birthday: </ExtraText>{character.birth_year}</Item>
+                <div>
+                    <CharacterFilms filmLinks={character.films}/>
+                </div>
+            </Character>
+        </Container>
     );
 };
 

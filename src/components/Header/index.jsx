@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './index.module.css';
 import image from "../../assets/logo.png";
+import { Container, Logo, Links, Link as StyledLink } from './style';
 export const Header = () => {
 
     return (
-        <header className={styles.header}>
+        <Container>
             <Link to={'/'}>
-                <img className={styles.logo} src={image}/>
+                <Logo src={image}/>
             </Link>
-            <div className={styles.links}>
-                <a className={styles.link} href="https://www.starwars.com/">Our site</a>
-                <a className={styles.link} href="https://instagram.com/starwars?igshid=YmMyMTA2M2Y=">Our Inst</a>
-            </div>
-        </header>
+            <Links>
+                <StyledLink href="https://www.starwars.com/">Our site</StyledLink>
+                <StyledLink href="https://instagram.com/starwars?igshid=YmMyMTA2M2Y=">Our Inst</StyledLink>
+            </Links>
+        </Container>
     )
 }
 

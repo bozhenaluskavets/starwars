@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Characters from "./Characters";
-import styles from './index.module.css';
 import { getFilmById } from "../../services/Films.service";
+import { Container, Films, Film, ExtraText, Item } from "../FilmInfo/style";
+import { Loader, LoaderContainer } from "../../globalStyles";
 
 const FilmInfo = () => {
 
@@ -20,31 +21,29 @@ const FilmInfo = () => {
 
     if (loading) {
         return (
-            <div className={styles.loaderBox}>
-                <div className={styles.loader}></div>
-            </div>
+            <LoaderContainer>
+                <Loader></Loader>
+            </LoaderContainer>
         )
     }
 
     return (
-        <div className={styles.container}>  
-            <div className={styles.films}>
-                <div className={styles.film}>
+        <Container>  
+            <Films>
+                <Film>
                     <h1>{film.title}</h1>
-                    <p><span>director: </span>{film.director}</p>
-                    <p><span>producer: </span>{film.producer}</p>
-                    <p><span>date of realese: </span>{film.release_date}</p>
-                    <p><span>opening: </span>"{film.opening_crawl}"</p>
-                    <p><span>Characters:</span></p>
+                    <Item><ExtraText>director: </ExtraText>{film.director}</Item>
+                    <Item><ExtraText>producer: </ExtraText>{film.producer}</Item>
+                    <Item><ExtraText>date of realese: </ExtraText>{film.release_date}</Item>
+                    <Item><ExtraText>opening: </ExtraText>"{film.opening_crawl}"</Item>
+                    <Item><ExtraText>Characters:</ExtraText></Item>
                     <div>
                         <Characters characterLinks={film.characters}/>
                     </div>
                     
-                </div>
-            </div>
-            
-        );
-        </div>
+                </Film>
+            </Films>
+        </Container>
     );
 };
 
