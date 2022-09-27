@@ -3,8 +3,8 @@ import styled from "styled-components"
 export const CharactersList = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     color: black;
-    font-weight: 500;
 `
 
 export const AllCharacters = styled.div`
@@ -14,6 +14,7 @@ export const AllCharacters = styled.div`
     text-decoration: none;
     cursor: pointer;
     color: black;
+    font-weight: 700;
 
     :hover {
         text-shadow: 2px 2px 2px #f5aa27;

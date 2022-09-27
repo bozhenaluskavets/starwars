@@ -11,7 +11,7 @@ export const CharacterFilm = styled.div`
     color: black;
     transition: 0.3s;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 2px;
     line-height: 2;
     :hover {

@@ -40,7 +40,6 @@ const FilmInfo = () => {
                     <div>
                         <Characters characterLinks={film.characters}/>
                     </div>
-                    
                 </Film>
             </Films>
         </Container>
