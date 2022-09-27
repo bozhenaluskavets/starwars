@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllFilms } from "../../services/Films.service";
 import { Link } from "react-router-dom";
-import { Container, Content, Films, Film, FilmDirector } from "./style";
+import { Container, Content, Films, Film, FilmTitle, FilmDirector } from "./style";
 import { Loader, LoaderContainer } from "../../globalStyles";
 
 const FilmsList = () => {
@@ -32,7 +32,7 @@ const FilmsList = () => {
                         <Films>
                             <Link to={'/film/' + film.episode_id}>
                                 <Film>
-                                    <h3>{film.title}</h3>
+                                    <FilmTitle>{film.title}</FilmTitle>
                                     <FilmDirector>{film.director}</FilmDirector>
                                     <p>{film.release_date}</p>
                                 </Film>

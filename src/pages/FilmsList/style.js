@@ -4,13 +4,11 @@ import background from '../../assets/backgroundFilmList.jpg'
 export const Container = styled.div`
     background: url(${background}) no-repeat center/cover;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `
 
 export const Content = styled.div`
-    width: 70%;
+    padding-top: 25vh;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -18,14 +16,15 @@ export const Content = styled.div`
 `
 
 export const Films = styled.div`
+    margin-bottom: 40px;
     padding: 50px 30px;
-    margin: 10px;
     cursor: pointer;
-    transition: 0.3s;
     text-align: center;
-    width: 270px;
+    transition: 0.3s;
+    width: 25%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     background-color: rgba(240, 248, 255, 0.562);
 
     :hover {
@@ -34,31 +33,18 @@ export const Films = styled.div`
 `
 
 export const Film = styled.div`
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
     color: black;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-transform: uppercase;
     line-height: 1.5;
     letter-spacing: 4px;
 `
 
-export const FilmTitle = styled.div`
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    color: black;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-transform: uppercase;
-    line-height: 1.5;
-    letter-spacing: 4px;
+export const FilmTitle = styled.h3`
+    font-size: 20px;
+    height: 100px;
 `
 
 export const FilmDirector = styled.h5`
-    margin: 50px 0;
+    height: 50px;
+    font-family: 'Montserrat', sans-serif;
 `
